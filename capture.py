@@ -5,10 +5,11 @@ import datetime
 # RTSP stream URL
 rtsp_url = 'rtsp://yourRTSPsource.lan/stream_1080'
 
-# OpenCV video capture object
-cap = cv2.VideoCapture(rtsp_url)
 
 while True:
+    # OpenCV video capture object
+    cap = cv2.VideoCapture(rtsp_url)
+
     # Capture frame
     ret, frame = cap.read()
 
@@ -19,8 +20,10 @@ while True:
 
     # Save frame as JPEG image
     cv2.imwrite(filename, frame)
-
+    
+    cap.release()
+    
     # Wait 
     time.sleep(3600)
 
-cap.release()
+
